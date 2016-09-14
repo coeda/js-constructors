@@ -10,7 +10,23 @@
  * @property {string} description
  * @method   printDetails
  */
-
+ function Spell(name, cost, description){
+  if(typeof name !== 'string'){
+    throw new TypeError('This is not a string');
+  }
+  this._name = name;
+  if(typeof cost !== 'number'){
+    throw new TypeError('This is not a number value');
+  }
+  this._cost = cost;
+  if(typeof description !== 'string'){
+    throw new TypeError('This value is not a string');
+  }
+  this._description = description;
+  Spell.prototype.getDetails = function(){
+  return this._name + this._cost + this._description;
+  };
+}
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -18,6 +34,7 @@
    * @name getDetails
    * @return {string} details containing all of the spells information.
    */
+
 
 /**
  * A spell that deals damage.
@@ -43,7 +60,11 @@
  * @property {number} damage
  * @property {string} description
  */
+function damageSpell(name, cost, damage, description){
+  Spell.call(this, name, cost, damage, description);
+}
 
+damageSpell.prototype = Object.create(Spell.prototype);
 /**
  * Now that you've created some spells, let's create
  * `Spellcaster` objects that can use them!
