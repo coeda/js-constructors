@@ -81,7 +81,23 @@ DamageSpell.prototype = Object.create(Spell.prototype);
  * @method  spendMana
  * @method  invoke
  */
+function Spellcaster(name, health, mana){
+  if(typeof name !== 'string'){
+    throw new TypeError('This is not a string');
+  }
+  this.name = name;
 
+  if(typeof health !== 'number'){
+    throw new TypeError('This is not a number value');
+  }
+  this.health = health;
+
+  if(typeof mana !== 'number'){
+    throw new TypeError('This is not a number value');
+  }
+  this.mana = mana;
+  this.isAlive = true;
+}
   /**
    * @method inflictDamage
    *
