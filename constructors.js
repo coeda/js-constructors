@@ -34,7 +34,9 @@
      */
 }
 
-Spell.prototype.getDetails = function(){return ('Spell Name: ' + this.name + 'Cost: ' + this.cost + 'Description: ' + this.description);};
+Spell.prototype.getDetails = function(){
+  return ('Spell Name: ' + this.name + 'Cost: ' + this.cost + 'Description: ' + this.description);
+};
 /**
  * A spell that deals damage.
  * We want to keep this code DRY (Don't Repeat Yourself).
@@ -108,7 +110,17 @@ function Spellcaster(name, health, mana){
    *
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
+Spellcaster.prototype.inflictDamage = function(damage){
+  if(this.health >= damage){
+    this.health -= damage;
 
+  } else {
+    this.health = 0;
+  }
+  if(this.health < 1){
+    this.isAlive = false;
+  }
+};
   /**
    * @method spendMana
    *
