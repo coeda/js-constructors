@@ -14,26 +14,26 @@
   if(typeof name !== 'string'){
     throw new TypeError('This is not a string');
   }
-  this._name = name;
+  this.name = name;
+
   if(typeof cost !== 'number'){
     throw new TypeError('This is not a number value');
   }
-  this._cost = cost;
+  this.cost = cost;
+
   if(typeof description !== 'string'){
     throw new TypeError('This value is not a string');
   }
-  this._description = description;
-  Spell.prototype.getDetails = function(){
-  return this._name + this._cost + this._description;
-  };
+  this.description = description;
+      /**
+     * Returns a string of all of the spell's details.
+     * The format doesn't matter, as long as it contains the spell name, cost, and description.
+     *
+     * @name getDetails
+     * @return {string} details containing all of the spells information.
+     */
+  this.getDetails = function(){return this.name + this.cost + this.description;};
 }
-  /**
-   * Returns a string of all of the spell's details.
-   * The format doesn't matter, as long as it contains the spell name, cost, and description.
-   *
-   * @name getDetails
-   * @return {string} details containing all of the spells information.
-   */
 
 
 /**
