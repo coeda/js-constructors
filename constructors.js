@@ -170,8 +170,7 @@ function Spellcaster(name, health, mana){
         if(this.spendMana(spell.cost) === true){
           if(spell instanceof DamageSpell && target instanceof Spellcaster){
           target.inflictDamage(spell.damage);
-          target.spendMana(Spell.cost);
-          console.log(this.mana);
+          console.log(Spell.cost);
           }
           if(spell instanceof DamageSpell && target instanceof Spellcaster === false){
             this.mana += spell.cost;
