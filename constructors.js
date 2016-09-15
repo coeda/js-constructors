@@ -130,8 +130,13 @@ function Spellcaster(name, health, mana){
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
-   Spellcaster.prototype.spendMana = function(){
-
+   Spellcaster.prototype.spendMana = function(mana){
+    if(this.mana > mana){
+      this.mana -= mana;
+      return true;
+    } else {
+      return false;
+    }
    };
   /**
    * @method invoke
