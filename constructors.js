@@ -32,7 +32,7 @@
      * @name getDetails
      * @return {string} details containing all of the spells information.
      */
-  this.getDetails = function(){return this.name + this.cost + this.description;};
+  this.getDetails = function(){return 'Spell Name: ' + this.name + 'Cost: ' + this.cost + 'Description: ' + this.description;};
 }
 
 
