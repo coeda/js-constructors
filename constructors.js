@@ -131,7 +131,7 @@ function Spellcaster(name, health, mana){
    * @return {boolean} success  Whether mana was successfully spent.
    */
    Spellcaster.prototype.spendMana = function(mana){
-    if(this.mana > mana){
+    if(this.mana >= mana){
       this.mana -= mana;
       return true;
     } else {
@@ -164,3 +164,28 @@ function Spellcaster(name, health, mana){
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+  Spellcaster.prototype.invoke = function(spell, target){
+    if(spell !== null){
+      if(spell instanceof Spell){
+        if(this.spendMana(spell.cost) === true){
+          if(spell instanceof DamageSpell && target instanceof Spellcaster){
+          target.inflictDamage(spell.damage);
+          target.spendMana(Spell.cost);
+          console.log(this.mana);
+          }
+          if(spell instanceof DamageSpell && target instanceof Spellcaster === false){
+            this.mana += spell.cost;
+            return false;
+          }
+        return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  };
